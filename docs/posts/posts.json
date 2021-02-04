@@ -11,9 +11,9 @@
     ],
     "date": "2021-02-03",
     "categories": [],
-    "contents": "\nI had a lot of fun learning how to analyze spatial data & making a cloropleth map with the ‘rnaturalearth’ package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the ‘viridis’ package to update the color gradient of my map!\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-02-03T22:59:19-08:00",
+    "contents": "\nI had a lot of fun learning how to analyze spatial data & making a cloropleth map with the ‘rnaturalearth’ package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the ‘viridis’ package to update the color gradient of the map & updated the background color of the plot using plot.background!\nInitial Data Wrangling:\n\n\nhide\n\n# Read in the data:\nplastics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')\n\n# Data Wrangling - Sum of total plastic counts by country:\nplastics_summary <- plastics %>% \n  drop_na(grand_total) %>% \n  filter(year == 2020) %>% \n  group_by(country) %>% \n  summarize(total_plastics = sum(grand_total)) \n\n\n\nMaking a chloropleth map using the ‘rnaturalearth’ package:\n\n\nhide\n\nworld <- ne_countries(scale = \"medium\", returnclass = \"sf\") \n\nworld_p <- plastics_summary %>% \n  left_join(world, ., by = c(\"name\" = \"country\"))\n\nggplot() +\n  geom_sf(data = world_p,\n          aes(fill = total_plastics), color = NA) +\n  scale_fill_viridis(option = \"viridis\",\n                     begin = 0.25,\n                     end = 1,\n                     breaks = c(10000, 20000,30000,40000,50000,60000),\n                     name = \"Total Plastics\")   +\n  theme_void() +\n  theme(plot.background = element_rect(fill = \"#f5f5f2\", color = NA)) +\n  labs(title = \"Worldwide Total Plastic Counts in 2020\") +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n",
+    "preview": "posts/2021-02-03-break-free-from-plastic/break-free-from-plastic_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2021-02-03T23:23:47-08:00",
     "input_file": {}
   },
   {

@@ -13,4 +13,56 @@ output:
     highlight: haddock
 ---
 
-I had a lot of fun learning how to analyze spatial data & making a cloropleth map with the 'rnaturalearth' package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the 'viridis' package to update the color gradient of my map!
+I had a lot of fun learning how to analyze spatial data & making a cloropleth map with the 'rnaturalearth' package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the 'viridis' package to update the color gradient of the map & updated the background color of the plot using plot.background!
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+library(tidyverse)
+library(broom)
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(maps)
+library(rnaturalearth)
+```
+
+### Initial Data Wrangling: 
+
+```{r}
+# Read in the data:
+plastics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
+
+# Data Wrangling - Sum of total plastic counts by country:
+plastics_summary <- plastics %>% 
+  drop_na(grand_total) %>% 
+  filter(year == 2020) %>% 
+  group_by(country) %>% 
+  summarize(total_plastics = sum(grand_total)) 
+```
+
+### Making a chloropleth map using the 'rnaturalearth' package: 
+
+```{r}
+world <- ne_countries(scale = "medium", returnclass = "sf") 
+
+world_p <- plastics_summary %>% 
+  left_join(world, ., by = c("name" = "country"))
+
+ggplot() +
+  geom_sf(data = world_p,
+          aes(fill = total_plastics), color = NA) +
+  scale_fill_viridis(option = "viridis",
+                     begin = 0.25,
+                     end = 1,
+                     breaks = c(10000, 20000,30000,40000,50000,60000),
+                     name = "Total Plastics")   +
+  theme_void() +
+  theme(plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+  labs(title = "Worldwide Total Plastic Counts in 2020") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
