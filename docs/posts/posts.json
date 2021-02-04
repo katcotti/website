@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-02-03-break-free-from-plastic/",
+    "title": "Break Free From Plastic",
+    "description": "This post shares my data wrangling & map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday",
+    "author": [
+      {
+        "name": "Kathleen Cotti",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-03",
+    "categories": [],
+    "contents": "\nI had a lot of fun learning how to analyze spatial data & making a cloropleth map with the ‘rnaturalearth’ package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the ‘viridis’ package to update the color gradient of my map!\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-03T22:38:39-08:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-02-03-welcome/",
     "title": "Welcome!",
     "description": "a little about me",
