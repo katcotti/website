@@ -1,0 +1,19 @@
+[
+  {
+    "path": "posts/2021-02-03-welcome/",
+    "title": "Welcome!",
+    "description": "a little about me",
+    "author": [
+      {
+        "name": "Kathleen Cotti",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-03",
+    "categories": [],
+    "contents": "\nWelcome to my website & blog! My name is Kat & I am a first year master’s student at the Bren School of Environmental Science & Management at UCSB. I grew up in the small town of Ojai California and recently returned to the Santa Barbara area after completing my bachelor’s degree from UC Davis in 2019. I’m a huge animal lover! I have been riding horses since I was three years old and continue to teach riding lessons and train young horses while in grad school. I love to backpack and travel, and outside of the classroom you will likely find me surfing, hiking, or doing yoga!\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-03T22:00:36-08:00",
+    "input_file": {}
+  }
+]
