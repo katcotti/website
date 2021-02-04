@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\nI had a lot of fun learning how to analyze spatial data & making a cloropleth map with the ‘rnaturalearth’ package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the ‘viridis’ package to update the color gradient of my map!\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-02-03T22:38:39-08:00",
+    "last_modified": "2021-02-03T22:59:19-08:00",
     "input_file": {}
   },
   {
