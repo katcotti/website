@@ -1,6 +1,7 @@
 ---
 title: "Welcome!"
-description: "a little about me" 
+description: |
+  a little bit about me
 author:
   - name: Kathleen Cotti
 date: 2021-02-03
