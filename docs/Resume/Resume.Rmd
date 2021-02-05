@@ -1,68 +1,73 @@
 ---
 title: CV
-name: Marie
-surname: Curie
-position: "Professor"
-address: "School of Physics & Chemistry, École Normale Supérieure"
-phone: +1 22 3333 4444
-www: mariecurie.com
-email: "Marie.Curie@ens.fr"
-twitter: mariecurie
-github: mariecurie
-linkedin: mariecurie
+name: Kat
+surname: Cotti
+position: "Master's Student"
+address: "Bren School of Environmental Science & Management"
+phone: +1 805 798 4877
+email: "kcotti@bren.ucsb.edu"
+github: katcotti
 date: "`r format(Sys.time(), '%B %Y')`"
-aboutme: "Marie is a Polish and naturalized-French physicist and chemist who conducts pioneering research on radioactivity."
+aboutme: "Kat is a first-year MESM student at the Bren School specializing in Corporate Environmental Management and Energy & Climate."
 output: 
   vitae::markdowncv:
-    theme: kjhealy
+    theme: davewhipp
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(vitae)
 ```
-
-## Some stuff about me
-
- * I poisoned myself doing research.
- * I was the first woman to win a Nobel prize
- * I was the first person and only woman to win a Nobel prize in two different sciences.
-
 ## Education
 
 ```{r}
 library(tibble)
 tribble(
   ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Informal studies", "1889-91", "Flying University", "Warsaw, Poland",
-  "Master of Physics", "1893", "Sorbonne Université", "Paris, France",
-  "Master of Mathematics", "1894", "Sorbonne Université", "Paris, France"
+  "Bachelor of Science in Animal Science & Managerial Economics", "2019", "Davis, CA", "University of California, Davis (UCD)",
+  "Master of Environmental Science and Management ", "Expected 2022", "Santa Barbara, CA", "University of California, Santa Barbara (UCSB)",
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
+## Professional Experience: 
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Black Mountain Sport Horses", "1/2015 - Present", "Ojai, CA", "Assistant Trainer",
+  "La Cumbre Animal Hospital", "10/2019- 4/2020", "Santa Barbara, CA", "Veterinary Technician",
+  "Karp Lab Univeristy of California Davis", "8/2018 - 6/2019", "Davis, CA",
+  "Ornithology Research Assistant",
+  "VIDA Volunteers", "9/2018", "Guatemala", "Veterinary Volunteer",
+  "UC Davis Hunter Jumper Equestrian Team",
+  "2018-2019", "Davis, CA", "President | Event's Coordinator"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+````
+## Additional Experience
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "The Banff National Park Program", "2018", "Alberta, Canada", "Wildlands Studies Field Study Program",
+  "UC Davis Veterinary Medicine Teaching Hospital", "9/2016 - 9/2018", "Davis, CA", "Large Animal Student Assistant",
+  "Ojai Village Veterinary Hospital", "1/2014-9/2016", "Ojai, CA", "Hospital Aide"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
+## Skills & Certifications: 
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "National Geographic Pristine Seas Initiative", "Jan 2021", "Bren Group Project Proposal - Economic Implications of Protecting the Patagonia Sea", "Proposal Writing",
+  "R-Studio (Website Design, Shiny Apps), Microsoft Office", " " , "Word, Excel, Powerpoint","Computer Skills:",
+  "Spanish", " ", "basic conversational skills", "Language:"
 ) %>% 
   detailed_entries(Degree, Year, Institution, Where)
 ```
 
-## Nobel Prizes
-
-```{r}
-tribble(
-  ~Year, ~Type, ~Desc,
-  1903, "Physics", "Awarded for her work on radioactivity with Pierre Curie and Henri Becquerel",
-  1911, "Chemistry", "Awarded for the discovery of radium and polonium"
-) %>% 
-  brief_entries(
-    glue::glue("Nobel Prize in {Type}"),
-    Year, 
-    Desc
-  )
-```
-
-## Publications
-
-```{r}
-library(dplyr)
-knitr::write_bib(c("vitae", "tibble"), "packages.bib")
-
-bibliography_entries("packages.bib") %>%
-  arrange(desc(author$family), issued)
-```
 
