@@ -1,7 +1,7 @@
 ---
 title: "Break Free From Plastic"
 description: |
-  This post shares my data wrangling & map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday 
+  1.26.2021 TidyTuesday - Choropleth Map Using `rnaturalearth`
 author:
   - name: Kathleen Cotti
     url: {}
@@ -13,7 +13,10 @@ output:
     highlight: haddock
 ---
 
-I had a lot of fun learning how to analyze spatial data & making a cloropleth map with the 'rnaturalearth' package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the 'viridis' package to update the color gradient of the map & updated the background color of the plot using plot.background!
+### Summary: 
+This post explores how to analyze spatial data & build a choropleth map with the `rnaturalearth` package to participate in Tidy Tuesday 1.26.2021. This post shows how to load in tidyTuesday data, merge spatial data frames using `left_join`, and build a finalized choropleth map. I wanted to look at total plastic counts by country and display this on a spatial map.  This is my first attempt at spacial data visualization and it was exciting to give spatial mapping a try for tidy tuesday!
+
+At first, I had issues reading in a spatial data frame for the world map outline, but the rnaturalearth package has built in world maps. I made a world map showing the total plastic counts for 2020 and played around with the `viridis` package to update the color gradient of the map, and I learned how to change background color of a plot using `plot.background` in `theme()`.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -30,22 +33,30 @@ library(maps)
 library(rnaturalearth)
 ```
 
-### Initial Data Wrangling: 
+### Reading in tidyTuesday data:  
 
 ```{r}
 # Read in the data:
 plastics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
+```
 
+### Data Wrangling: 
+For this map I wanted to look at total plastic counts for 2020, so I filtered the data using various functions from the `dplyr` package:
+
+```{r}
 # Data Wrangling - Sum of total plastic counts by country:
 plastics_summary <- plastics %>% 
+# Remove NA values:
   drop_na(grand_total) %>% 
+# Filter to only keep counts from 2020:
   filter(year == 2020) %>% 
+# Group by country:
   group_by(country) %>% 
+# Find total plastics per country: 
   summarize(total_plastics = sum(grand_total)) 
 ```
 
 ### Making a chloropleth map using the 'rnaturalearth' package: 
-
 ```{r}
 world <- ne_countries(scale = "medium", returnclass = "sf") 
 
