@@ -1,0 +1,16 @@
+---
+title: "Harry Potter Text Analysis"
+description: |
+  In this post, I explore wrangling text data from Harry Potter & The Sorcer's Stone.
+author:
+  - name: Kathleen Cotti
+    url: {}
+date: 2021-02-20
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+

@@ -35,7 +35,7 @@ tribble(
 library(tibble)
 tribble(
   ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Black Mountain Sport Horses", "1/2015 - Present", "Ojai, CA", "Assistant Trainer",
+  "Black Mountain Sport Horses", "1/2015 - Present", "Ojai, CA", "Assistant Trainer", 
   "La Cumbre Animal Hospital", "10/2019- 4/2020", "Santa Barbara, CA", "Veterinary Technician",
   "Karp Lab Univeristy of California Davis", "8/2018 - 6/2019", "Davis, CA",
   "Ornithology Research Assistant",
