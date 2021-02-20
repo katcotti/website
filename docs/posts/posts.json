@@ -1,5 +1,39 @@
 [
   {
+    "path": "posts/2021-02-20-california-oil-spills/",
+    "title": "California Oil Spills",
+    "description": "Choropleth Map Using `ggplot2`",
+    "author": [
+      {
+        "name": "Kathleen Cotti",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-20",
+    "categories": [],
+    "contents": "\nSummary:\nThis post explores how to build a static choropleth map with R and the ggplot2 package. It shows how to load spatial data into R, merge region features between datasets, and build a finalized map of 2008 counts of inland oil spills in California counties as a fill color gradient.\nI first had issues plotting the oil spills as fill color on the map when I used two separate geom_sf() layers, but I realized I could merge the data frame and then use the number column aesthetically as the fill color of the map. In doing this project, I became more familiar with reading in and wrangling spatial data, using the sf package functions, and how to use the viridis package for color gradients. I also used the guide function to update my legend.\nFinding & Downloading Spatial Data:\nA choropleth map requires a geospatial dataset to provide the region boundaries, in this example we are looking at California counties. Find & Download shapefile data for borders of California counties.\nWe will also need another geospatial dataset with numeric variables for each location that will we use to color the counties. Download data from CA DFW Oil Spill Incident Tracking URL\nFirst, we need to load the spatial data sets into R using the read_sf() funtion from the sf package. I created a folder in my project root named “data” to store all data files & then the oil spatial data files are in a folder labeled “Oil_Spill_Tracking” and the California counties boundary data in a folder labeled “ca_counties”. I then use the here() function from the janitor package to give a clear file path to the shape files.\n\n\nhide\n\n# Read in the oil spatial data: \noil_spill_data <- read_sf(here(\"data\",\"Oil_Spill_Tracking\",\"Oil_Spill_Incident_Tracking_%5Bds394%5D.shp\")) %>% \n  clean_names()\n\n# Read in the CA counties data as an entire layer:\nca_counties <- read_sf(here(\"data\",\"ca_counties\"), layer = \"CA_Counties_TIGER2016\") %>% \n  clean_names() %>% \n  select(name) \n\n\n\nNext, we need to check the projections, or how the coordinate reference systems are displayed, of the spatial data sets using the st_crs() function from the sf package. When merging two data sets to make this map, it is important that the projections of both data sets match or you’ll encounter difficulties in analysis & mapping. If the datasets have different projections, the st_transform() function can be used to transform one spatial data set to match the other, as shown below:\n\n\nhide\n\n#Check the Projections:\n# st_crs(oil_spill_data) \n# WGS 84\n\n# st_crs(ca_counties)\n# WGS 84\n\n#Set this data set to have the same CRS as above:\nca_counties <- st_transform(ca_counties, st_crs(oil_spill_data))\n\n\n\nData Wrangling of Oil Data:\nFor this analysis, we are specifically plotting the number of inland oil spills per California county in 2008. Therefore, some wrangling using functions from the dplyr package is necessary to get counts per county:\n\n\nhide\n\n# Data Wrangling - count oil spills for ca county:\n## Make a subset of data:\ninland_subset <- oil_spill_data %>% \n# Rename county for simplificaiton:\n  rename(county = localecoun) %>% \n# Only keep obervations from inland areas:\n  filter(inlandmari == \"Inland\") %>% \n# Group oil spills by county:\n  group_by(county) %>% \n# Count the number of inland oil spills per county:\n  count(inlandmari) %>% \n# Remove the inland column for simplification:\n  select(-inlandmari)\n\n\n\nMerge the spatial data sets:\nIn order to plot the oil data with the California counties outlines, we must merge the data so we can plot the number of oil spills as a fill color gradient in our map\n\n\nhide\n\n# Join the data sets into a single data frame:\ncounties_oil <- st_join(ca_counties, inland_subset) \n\n\n\nMake a customized chloropleth map with ggplot2:\n\n\nhide\n\n#Make a Static Chloroleth Map:\nggplot() +\n  geom_sf(data = counties_oil,\n          aes(fill = n),\n          size = 0,\n          color = \"white\") +\n  scale_fill_viridis(option = \"inferno\", \n                     breaks = c(50, 100, 150, 200, 250, 300, 350, 400),\n                     begin = 0.1, \n                     end = 0.9,\n                     guide = guide_legend(keyheight = unit(5, units = \"mm\"), keywidth=unit(5, units = \"mm\"))) +\n  theme_void() +\n  labs(title = \"2008 Inland Oil Spill Events Across All California Counties\",\n       fill = \"Number of Oil Spills\") +\n  theme(\n    plot.background = element_rect(fill = \"#f5f5f3\", color = NA),\n    plot.title = element_text(size = 14)\n  )\n\n\n\n\n\n\n\n",
+    "preview": "posts/2021-02-20-california-oil-spills/california-oil-spills_files/figure-html5/unnamed-chunk-5-1.png",
+    "last_modified": "2021-02-20T15:45:50-08:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/2021-02-20-harry-potter-text-analysis/",
+    "title": "Harry Potter Text Analysis",
+    "description": "In this post, I explore wrangling text data from Harry Potter & The Sorcer's Stone.",
+    "author": [
+      {
+        "name": "Kathleen Cotti",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-20",
+    "categories": [],
+    "contents": "\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-20T15:11:31-08:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-02-03-break-free-from-plastic/",
     "title": "Break Free From Plastic",
     "description": "This post shares my data wrangling & map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday",

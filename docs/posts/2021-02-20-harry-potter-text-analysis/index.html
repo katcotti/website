@@ -53,65 +53,70 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; } /* Alert */
-code span.an { color: #008000; } /* Annotation */
-code span.at { } /* Attribute */
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #0000ff; } /* ControlFlow */
-code span.ch { color: #008080; } /* Char */
-code span.cn { } /* Constant */
-code span.co { color: #008000; } /* Comment */
-code span.cv { color: #008000; } /* CommentVar */
-code span.do { color: #008000; } /* Documentation */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
 code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #008000; } /* Information */
-code span.kw { color: #0000ff; } /* Keyword */
-code span.op { } /* Operator */
-code span.ot { color: #ff4000; } /* Other */
-code span.pp { color: #ff4000; } /* Preprocessor */
-code span.sc { color: #008080; } /* SpecialChar */
-code span.ss { color: #008080; } /* SpecialString */
-code span.st { color: #008080; } /* String */
-code span.va { } /* Variable */
-code span.vs { color: #008080; } /* VerbatimString */
-code span.wa { color: #008000; font-weight: bold; } /* Warning */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>Kat Cotti: Break Free From Plastic</title>
+<title>Kat Cotti: Harry Potter Text Analysis</title>
 
-<meta property="description" itemprop="description" content="This post shares my data wrangling &amp; map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday"/>
+<meta property="description" itemprop="description" content="In this post, I explore wrangling text data from Harry Potter &amp; The Sorcer&#39;s Stone."/>
 
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2021-02-03"/>
-<meta property="article:created" itemprop="dateCreated" content="2021-02-03"/>
+<meta property="article:published" itemprop="datePublished" content="2021-02-20"/>
+<meta property="article:created" itemprop="dateCreated" content="2021-02-20"/>
 <meta name="article:author" content="Kathleen Cotti"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Kat Cotti: Break Free From Plastic"/>
+<meta property="og:title" content="Kat Cotti: Harry Potter Text Analysis"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="This post shares my data wrangling &amp; map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday"/>
+<meta property="og:description" content="In this post, I explore wrangling text data from Harry Potter &amp; The Sorcer&#39;s Stone."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Kat Cotti"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Kat Cotti: Break Free From Plastic"/>
-<meta property="twitter:description" content="This post shares my data wrangling &amp; map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday"/>
+<meta property="twitter:title" content="Kat Cotti: Harry Potter Text Analysis"/>
+<meta property="twitter:description" content="In this post, I explore wrangling text data from Harry Potter &amp; The Sorcer&#39;s Stone."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Break Free From Plastic"]},{"type":"character","attributes":{},"value":["This post shares my data wrangling & map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kathleen Cotti"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2021-02-03"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","code_folding","highlight"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["hide"]},{"type":"character","attributes":{},"value":["haddock"]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Harry Potter Text Analysis"]},{"type":"character","attributes":{},"value":["In this post, I explore wrangling text data from Harry Potter & The Sorcer's Stone."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kathleen Cotti"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2021-02-20"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["break-free-from-plastic_files/anchor-4.2.2/anchor.min.js","break-free-from-plastic_files/bowser-1.9.3/bowser.min.js","break-free-from-plastic_files/distill-2.2.21/template.v2.js","break-free-from-plastic_files/figure-html5/unnamed-chunk-2-1.png","break-free-from-plastic_files/figure-html5/unnamed-chunk-3-1.png","break-free-from-plastic_files/header-attrs-2.6.6/header-attrs.js","break-free-from-plastic_files/jquery-1.11.3/jquery.min.js","break-free-from-plastic_files/popper-2.6.0/popper.min.js","break-free-from-plastic_files/tippy-6.2.7/tippy-bundle.umd.min.js","break-free-from-plastic_files/tippy-6.2.7/tippy-light-border.css","break-free-from-plastic_files/tippy-6.2.7/tippy.css","break-free-from-plastic_files/tippy-6.2.7/tippy.umd.min.js","break-free-from-plastic_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"NULL"}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2374,7 +2379,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Break Free From Plastic","description":"This post shares my data wrangling & map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday","authors":[{"author":"Kathleen Cotti","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-03T00:00:00.000+00:00","citationText":"Cotti, 2021"}
+{"title":"Harry Potter Text Analysis","description":"In this post, I explore wrangling text data from Harry Potter & The Sorcer's Stone.","authors":[{"author":"Kathleen Cotti","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-20T00:00:00.000+00:00","citationText":"Cotti, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2399,70 +2404,19 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Break Free From Plastic</h1>
+<h1>Harry Potter Text Analysis</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>This post shares my data wrangling &amp; map of total world plastic pollution for 2020 created for the 1.26.2021 TidyTuesday</p></p>
+<p><p>In this post, I explore wrangling text data from Harry Potter &amp; The Sorcer’s Stone.</p></p>
 </div>
 
 <div class="d-byline">
   Kathleen Cotti true 
   
-<br/>2021-02-03
+<br/>2021-02-20
 </div>
 
 <div class="d-article">
-<p>I had a lot of fun learning how to analyze spatial data &amp; making a cloropleth map with the ‘rnaturalearth’ package to participate in Tidy Tuesday 1.26.2021. I made a world map showing the total plastic counts for 2020 and played around with the ‘viridis’ package to update the color gradient of the map &amp; updated the background color of the plot using plot.background!</p>
-<p><img src="www/plastic.png" /></p>
-<h3 id="initial-data-wrangling">Initial Data Wrangling:</h3>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data:</span>
-<span class='va'>plastics</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv'</span><span class='op'>)</span>
-
-<span class='co'># Data Wrangling - Sum of total plastic counts by country:</span>
-<span class='va'>plastics_summary</span> <span class='op'>&lt;-</span> <span class='va'>plastics</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>drop_na</span><span class='op'>(</span><span class='va'>grand_total</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2020</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>country</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>total_plastics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>grand_total</span><span class='op'>)</span><span class='op'>)</span> 
-</code></pre>
-</div>
-</details>
-</div>
-<h3 id="making-a-chloropleth-map-using-the-rnaturalearth-package">Making a chloropleth map using the ‘rnaturalearth’ package:</h3>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>world</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://docs.ropensci.org/rnaturalearth/reference/ne_countries.html'>ne_countries</a></span><span class='op'>(</span>scale <span class='op'>=</span> <span class='st'>"medium"</span>, returnclass <span class='op'>=</span> <span class='st'>"sf"</span><span class='op'>)</span> 
-
-<span class='va'>world_p</span> <span class='op'>&lt;-</span> <span class='va'>plastics_summary</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>world</span>, <span class='va'>.</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"name"</span> <span class='op'>=</span> <span class='st'>"country"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsf.html'>geom_sf</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>world_p</span>,
-          <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>total_plastics</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/viridis/man/scale_viridis.html'>scale_fill_viridis</a></span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"viridis"</span>,
-                     begin <span class='op'>=</span> <span class='fl'>0.25</span>,
-                     end <span class='op'>=</span> <span class='fl'>1</span>,
-                     breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10000</span>, <span class='fl'>20000</span>,<span class='fl'>30000</span>,<span class='fl'>40000</span>,<span class='fl'>50000</span>,<span class='fl'>60000</span><span class='op'>)</span>,
-                     name <span class='op'>=</span> <span class='st'>"Total Plastics"</span><span class='op'>)</span>   <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#f5f5f2"</span>, color <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Worldwide Total Plastic Counts in 2020"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>hjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<p><img src="break-free-from-plastic_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
-</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
