@@ -13,4 +13,4 @@ output:
 site: distill::distill_website
 ---
  
-Kat is a first year Master’s student at the Bren School of Environmental Science and Management, specializing in Corporate Environmental Management &. She graduated from The University of California Davis with a Bachelor of Science in Animal Science & Managerial Economics in 2019. Through her diverse educational and professional experiences, she has become interested in the ecological and economic impacts of animal agriculture & furthering sustainable development.
+Kat is a first year Master’s student at the Bren School of Environmental Science and Management, specializing in Corporate Environmental Management & Energy and Climate. She graduated from The University of California Davis with a Bachelor of Science in Animal Science & Managerial Economics in 2019. Through her diverse educational and professional experiences, she has become interested in the ecological and economic impacts of animal agriculture & furthering sustainable development.
