@@ -2417,10 +2417,10 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>I first had issues plotting the oil spills as fill color on the map when I used two separate <code>geom_sf()</code> layers, but I realized I could merge the data frame and then use the number column aesthetically as the fill color of the map. In doing this project, I became more familiar with reading in and wrangling spatial data, using the <code>sf</code> package functions, and how to use the <code>viridis</code> package for color gradients. I also used the <code>guide</code> function to update my legend.</p>
 <h3 id="finding-downloading-spatial-data">Finding &amp; Downloading Spatial Data:</h3>
 <ul>
-<li>A choropleth map requires a geospatial dataset to provide the region boundaries, in this example we are looking at California counties. Find &amp; Download shapefile data for borders of California counties.</li>
-<li>We will also need another geospatial dataset with numeric variables for each location that will we use to color the counties. Download data from CA DFW Oil Spill Incident Tracking <a href="https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/data">URL</a></li>
+<li>A choropleth map requires a geospatial dataset to provide the region boundaries, in this example we are looking at California counties. First, I had to find &amp; download a shapefile data for borders of California counties.</li>
+<li>You also need another geospatial dataset with numeric variables for each location that will we use to color the counties. I used download data from CA DFW Oil Spill Incident Tracking <a href="https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/data">URL</a></li>
 </ul>
-<p>First, we need to load the spatial data sets into R using the <code>read_sf()</code> funtion from the <code>sf</code> package. I created a folder in my project root named “data” to store all data files &amp; then the oil spatial data files are in a folder labeled “Oil_Spill_Tracking” and the California counties boundary data in a folder labeled “ca_counties”. I then use the <code>here()</code> function from the <code>janitor</code> package to give a clear file path to the shape files.</p>
+<p>First, I loaded the spatial data sets into R using the <code>read_sf()</code> funtion from the <code>sf</code> package. I created a folder in my project root named “data” to store all data files &amp; then the oil spatial data files are in a folder labeled “Oil_Spill_Tracking” and the California counties boundary data in a folder labeled “ca_counties”. I then use the <code>here()</code> function from the <code>janitor</code> package to give a clear file path to the shape files.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2439,7 +2439,7 @@ hide
 </div>
 </details>
 </div>
-<p>Next, we need to check the projections, or how the coordinate reference systems are displayed, of the spatial data sets using the <code>st_crs()</code> function from the <code>sf</code> package. When merging two data sets to make this map, it is important that the projections of both data sets match or you’ll encounter difficulties in analysis &amp; mapping. If the datasets have different projections, the <code>st_transform()</code> function can be used to transform one spatial data set to match the other, as shown below:</p>
+<p>Next, I checked the projections, or how the coordinate reference systems are displayed, of the spatial data sets using the <code>st_crs()</code> function from the <code>sf</code> package. When merging two data sets to make this map, it is important that the projections of both data sets match or you’ll encounter difficulties in analysis &amp; mapping. If the datasets have different projections, the <code>st_transform()</code> function can be used to transform one spatial data set to match the other, as shown below:</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2460,7 +2460,7 @@ hide
 </details>
 </div>
 <h3 id="data-wrangling-of-oil-data">Data Wrangling of Oil Data:</h3>
-<p>For this analysis, we are specifically plotting the number of inland oil spills per California county in 2008. Therefore, some wrangling using functions from the <code>dplyr</code> package is necessary to get counts per county:</p>
+<p>For this analysis, I specifically plotted the number of inland oil spills per California county in 2008. Therefore, some data wrangling using functions from the <code>dplyr</code> package was necessary to get counts per county:</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2485,7 +2485,7 @@ hide
 </details>
 </div>
 <h3 id="merge-the-spatial-data-sets">Merge the spatial data sets:</h3>
-<p>In order to plot the oil data with the California counties outlines, we must merge the data so we can plot the number of oil spills as a fill color gradient in our map</p>
+<p>In order to plot the oil data with the California counties outlines, I merged the data so I could plot the number of oil spills as a fill color gradient in the map</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>

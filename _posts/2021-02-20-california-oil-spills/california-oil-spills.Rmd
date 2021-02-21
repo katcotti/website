@@ -31,10 +31,11 @@ library(viridis)
 ```
 
 ### Finding & Downloading Spatial Data: 
-- A choropleth map requires a geospatial dataset to provide the region boundaries, in this example we are looking at California counties. Find & Download shapefile data for borders of California counties.
-- We will also need another geospatial dataset with numeric variables for each location that will we use to color the counties. Download data from CA DFW Oil Spill Incident Tracking [URL](https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/data)
 
-First, we need to load the spatial data sets into R using the `read_sf()` funtion from the `sf` package. I created a folder in my project root named "data" to store all data files & then the oil spatial data files are in a folder labeled "Oil_Spill_Tracking" and the California counties boundary data in a folder labeled "ca_counties". I then use the `here()` function from the `janitor` package to give a clear file path to the shape files. 
+- A choropleth map requires a geospatial dataset to provide the region boundaries, in this example we are looking at California counties. First, I had to find & download a shapefile data for borders of California counties.
+- You also need another geospatial dataset with numeric variables for each location that will we use to color the counties. I used download data from CA DFW Oil Spill Incident Tracking [URL](https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/data)
+
+First, I loaded the spatial data sets into R using the `read_sf()` funtion from the `sf` package. I created a folder in my project root named "data" to store all data files & then the oil spatial data files are in a folder labeled "Oil_Spill_Tracking" and the California counties boundary data in a folder labeled "ca_counties". I then use the `here()` function from the `janitor` package to give a clear file path to the shape files. 
 
 ```{r}
 # Read in the oil spatial data: 
@@ -47,7 +48,7 @@ ca_counties <- read_sf(here("data","ca_counties"), layer = "CA_Counties_TIGER201
   select(name) 
 ```
 
-Next, we need to check the projections, or how the coordinate reference systems are displayed, of the spatial data sets using the `st_crs()` function from the `sf` package. When merging two data sets to make this map, it is important that the projections of both data sets match or you'll encounter difficulties in analysis & mapping. If the datasets have different projections, the `st_transform()` function can be used to transform one spatial data set to match the other, as shown below:
+Next, I checked the projections, or how the coordinate reference systems are displayed, of the spatial data sets using the `st_crs()` function from the `sf` package. When merging two data sets to make this map, it is important that the projections of both data sets match or you'll encounter difficulties in analysis & mapping. If the datasets have different projections, the `st_transform()` function can be used to transform one spatial data set to match the other, as shown below:
 
 ```{r}
 #Check the Projections:
@@ -63,7 +64,7 @@ ca_counties <- st_transform(ca_counties, st_crs(oil_spill_data))
 
 ### Data Wrangling of Oil Data:
 
-For this analysis, we are specifically plotting the number of inland oil spills per California county in 2008. Therefore, some wrangling using functions from the `dplyr` package is necessary to get counts per county:
+For this analysis, I specifically plotted the number of inland oil spills per California county in 2008. Therefore, some data wrangling using functions from the `dplyr` package was necessary to get counts per county:
 
 ```{r, fig.align = "center"}
 # Data Wrangling - count oil spills for ca county:
@@ -83,7 +84,7 @@ inland_subset <- oil_spill_data %>%
 
 ### Merge the spatial data sets:
 
-In order to plot the oil data with the California counties outlines, we must merge the data so we can plot the number of oil spills as a fill color gradient in our map
+In order to plot the oil data with the California counties outlines, I merged the data so I could plot the number of oil spills as a fill color gradient in the map
 
 ```{r}
 # Join the data sets into a single data frame:
