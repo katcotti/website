@@ -14,6 +14,9 @@ output:
     highlight: haddock
 ---
 
+### Summary: 
+
+This post includes a mini-report I completed for my Environmental Data Science course in Fall of 2020 at the Bren School. I learned how to customize `gg_beeswarm` plots and descriptive statistic tables with `kableExtra`. I also practiced running two-sample t-tests and linear regression analysis in R and describe the outcomes in this report. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
