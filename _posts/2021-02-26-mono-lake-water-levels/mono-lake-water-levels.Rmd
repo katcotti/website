@@ -1,0 +1,13 @@
+---
+title: "Mono Lake Water Levels"
+description: |
+  Interactive Graph using `ggplotly` & Using `geom_text` to Add Text to `ggplot` Graphs
+author:
+  - name: Kathleen Cotti
+    url: {}
+date: 2021-02-26
+output:
+  distill::distill_article:
+    self_contained: false
+---
+

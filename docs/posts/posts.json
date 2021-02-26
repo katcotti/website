@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-02-26-mono-lake-water-levels/",
+    "title": "Mono Lake Water Levels",
+    "description": "Interactive Graph using `ggplotly` & Using `geom_text` to Add Text to `ggplot` Graphs",
+    "author": [
+      {
+        "name": "Kathleen Cotti",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-26",
+    "categories": [],
+    "contents": "\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-26T11:30:10-08:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-02-20-california-oil-spills/",
     "title": "California Oil Spills",
     "description": "Choropleth Map Using `ggplot2`",
