@@ -16,7 +16,7 @@ output:
 
 ### Summary: 
 
-This post includes a mini-report I completed for my Environmental Data Science course in Fall of 2020 at the Bren School. I learned how to customize `gg_beeswarm` plots and descriptive statistic tables with `kableExtra`. I also practiced running two-sample t-tests and linear regression analysis in R and describe the outcomes in this report. 
+This post includes a mini-report I completed for my Environmental Data Science course in Fall of 2020 at the Bren School. I learned how to customize `gg_beeswarm` plots and descriptive statistic tables with `kableExtra`. I also practiced running two-sample t-tests and linear regression analysis in R and describing the outcomes with in line text referencing in this report. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -49,6 +49,7 @@ Snowshoe hare weight and size measurements were collected from capture-recapture
 # C. Exploratory Findings: 
 
 ### i) Annual Juvenile Hare Trap Counts and Descriptive Statistics:
+This section explores using the `lubridate` package to convert date columns to date class in R, and using the `dplyr` `count` function to find counts of groupings of variables & then graph counts using `ggplot`. Then, I use the `dplyr` `summarize` function to find descriptive statistics & store aoutcomes as objects in R to use for in line referencing of results in the analysis. 
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.cap = "**Figure 1:** Bar graph displaying counts of juvenile snowshoe hares trapped per year of the study (1998-2012). Sex and grid (sampling site) were not considered as variables here. No data is available for hare age in 1998, 2002, and 2009 therefore counts of juveniles trapped can not be included for these years. Data: Kielland et al. (2017)"}
 
@@ -86,6 +87,7 @@ min_hares <- juvenile_summary[1,4] #Stores min as an object
 The minimum juvenile snowshoe hare trapping count in this region is `r min_hares`, and the maximum is `r max_hares`. According to the data available for this report, this minimum occurred in 2010 and the maximum occurred in 1999. The mean number of juvenile snowshoes trapped per year is `r mean_hare`. Since the maximum in 1999 is a large outlier, the mean is a skewed measure of central tendency. The median number of juvenile snowshoes trapped annually is `r median_hares`, and since this dataset is largely skewed by outliers this is a more accurate measure of central tendency. The general trend seen in the histogram is a decrease in the number of juvenile hares trapped from 1999 to 2012, with a large decrease between 1999 and 2001. Accounting for the number of traps placed per year and the time the traps were left out would help to standardize the juvenile count data further, since having a larger number of traps or traps being left out longer could correlate to increased numbers of trapped hares. It would be useful to have consistent data collection techniques, such as ages notated in each year. Since age data was not collected in 1998, 2002, and 2009 we can not see a trend across the entire data set for juvenile counts. 
 
 ## ii) Difference in Juvenile Hare Weight Between Male and Female across grid (sampling site) locations:
+This section explores making beeswarm plots with a boxplot containing summary statistics to present the distribution of male vs. female hare weights across different locations. Using beeswarm and boxplots together allows the visualization of actual data points & summary statistic values on the same graph.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.align= "center", fig.cap = "**Figure 2:** Weight (g) observations for male, female, and NA (Undetermined) juvenile snowshoe hares in each of the three grid locations (bonbs, bonmat, and bonrip). Dark Green(Female), Golden Yellow(Male), and Gray (NA) points indicate individual observations for weight (g) of juvenile snowshoe hares. Box endpoints indicate the 25th and 75th percentile values; the black line and black point within the box indicate the median and mean value for each gender in each grid, respectively. Data: Kielland et al. (2017)"}
 
@@ -159,7 +161,7 @@ ggplot(data = j_hare_weight, aes(sample = weight)) +
 
 ## iii.) Difference in Weight Between Male and Female Juvenile Snowshoe Hares:
 
-As a starting point, the distribution of male and female juvenile hare weights were explored using both histograms and quantile-quantile plots. The distributions are relatively normal, and both our sample  allowing us to move forward with our t-test.  
+As a starting point, the distribution of male and female juvenile hare weights were explored using both histograms and quantile-quantile plots. The distributions are relatively normal, and both our sample  allowing us to move forward with our t-test using the `t.test` function. 
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, include = FALSE}
 
