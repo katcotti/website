@@ -9,5 +9,104 @@ date: 2021-02-26
 output:
   distill::distill_article:
     self_contained: false
+    code_folding: hide
+    highlight: haddock
 ---
+### Summary:
+This post explores how to build an interactive graph in R using the `plotly` package and explores how to add text and horizontal lines to a `ggplot` graph to customize the graph with relevant information. I also learned how to use skip when reading in csv files to skip lines that are not relevant to the data. 
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)
+library(tidyverse)
+library(here)
+library(janitor)
+library(plotly)
+```
+
+### Reading in Data:
+First, when reading in the data I learned how to use the `skip()` function in read.csv to skip the lines in the data set that were not under the variables of interest, and then I used the `clean_names()` function to get the variables in lower snake case.
+
+```{r}
+# c. Read in the data, skipping the first 5 rows:
+mono_lake_data <- read.csv(here("data", "mono_lake_annual_levels.csv"), skip = 5) %>% 
+
+#Use clean names to put data in lower case snake case:
+  clean_names() 
+```
+
+### Make a `ggplot()` graph & Use the `ggplotly()` to make the graph interactive:
+Next, I made and stored a ggplot() of Water Levels for Mono Lake. I used the `geom_text()` function to add in data points for historic legislative instances that have affected the lakes water levels & I learned how to use `geom_hline()` to add horizontal lines for possible lake levels if legislation had differed to create a finalized figure of how Mono Lake water levels has been influenced by legislative decisions.
+
+```{r, fig.align="center", fig.cap= " Mono Lake Water Level Observations, Measured in Feet Above Sea Level, from 1850 to 2017 are displayed by the blue line. The black data points illustrate important legislative instances in Mono Lake history. In 1941, the Los Angeles Department of Water and Power began diverting water from Mono Lake. The Yellow Horizontal Line represents what the current lake level would be if water diversions had never begun. In 1983, the Public Trust doctrine ruled the DWP water diversions from Mono Lake needed to be reconsidered to protect the lake. The red horizontal line represents what the current water level would be if no protections would have been installed. In 1994,the state water board issued Decision 1631 to set the lake level at 6392 feet, illustrated by the orange horizontal line labeled *Stable Lake Level*. In 2013, the Mono Basin Stream Restoration Agreement was approved to commit the state to protecting and restoring Mono Lake."}
+# d. Make a data visualization for the change in lake levels for all the years:
+mono_plot <- ggplot(data = mono_lake_data,
+       aes(x = year, 
+           y = lake_level_feet_above_sea_level)) +
+   geom_line(size = 1, color = "skyblue2") +
+  scale_x_continuous(limits = c(1850,2020), 
+                     breaks = c(1850, 1875, 1900, 1925, 1950, 1975, 2000, 2017))+
+  scale_y_continuous(limits = c(6340, 6440),
+                     breaks = c (6340, 6360, 6380,6400,6420,6440)) +
+  labs(x = "Year",
+       y = "Lake Water Level (feet above sea level)",
+       title = "Change in Mono Lake Water Levels Measured in Feet Above Sea Level \n from 1850 - 2017") +
+  geom_hline(yintercept = 6392,
+             color = "darkorange2",
+             size = 0.75,
+             alpha = 0.5) +
+  geom_text(aes(1865, 6392),
+            color = "darkorange2",
+            label = "Stable Lake Level (6392 ft)",
+            size = 2.5,
+            vjust = -0.1) +
+  geom_hline(yintercept = 6418,
+             color = "goldenrod",
+             size = 0.75,
+             alpha = 0.5) +
+  geom_text(aes(1875, 6418),
+            label = "Current Level if There Were \n Never Water Diversions (6,418 ft)",
+            vjust = -0.1, 
+            color = "goldenrod",
+            size = 2.5) +
+  geom_hline(yintercept = 6350,
+             color = "darkred",
+             size = 0.75,
+             alpha = 0.5) +
+  geom_text(aes(1860, 6350),
+            label = "Current Level if There Was \n No Protection (6,350 ft)",
+            vjust = -0.1,
+            color = "darkred",
+            size = 2.5) +
+ geom_point(aes(x =1941, 
+                 y=6417),
+             size =1) +
+  geom_text(aes(1960,6422),
+            label = "1941: Water Diversion Begins",
+            vjust =-0.1,
+            size = 3) +
+  geom_point(aes(1983,6378),
+             size =1) +
+  geom_text(aes(1985,6372),
+            label = "1983: \n Public Trust Decision",
+            size = 3)  +
+  geom_point(aes(1994,6374.60),
+             size =1) +
+  geom_text(aes(2011,6373),
+            label = "1994: Decision 1631",
+            size = 3) +
+  geom_point(aes(2013, 6380.60),
+             size =1) +
+  geom_text(aes(2015, 6387),
+            label = "2013: Restoration \n Agreement",
+            size =3) +
+  theme_light() +
+  theme(plot.title = element_text(hjust = 0.5)) 
+
+# Make a graph interactive:
+ggplotly(mono_plot) 
+```
+
+
 
