@@ -110,7 +110,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["california-oil-spills_files/anchor-4.2.2/anchor.min.js","california-oil-spills_files/bowser-1.9.3/bowser.min.js","california-oil-spills_files/distill-2.2.21/template.v2.js","california-oil-spills_files/figure-html5/unnamed-chunk-2-1.png","california-oil-spills_files/figure-html5/unnamed-chunk-5-1.png","california-oil-spills_files/header-attrs-2.6.6/header-attrs.js","california-oil-spills_files/jquery-1.11.3/jquery.min.js","california-oil-spills_files/popper-2.6.0/popper.min.js","california-oil-spills_files/tippy-6.2.7/tippy-bundle.umd.min.js","california-oil-spills_files/tippy-6.2.7/tippy-light-border.css","california-oil-spills_files/tippy-6.2.7/tippy.css","california-oil-spills_files/tippy-6.2.7/tippy.umd.min.js","california-oil-spills_files/webcomponents-2.0.0/webcomponents.js","oil.png"]}
+  {"type":"character","attributes":{},"value":["california-oil-spills_files/anchor-4.2.2/anchor.min.js","california-oil-spills_files/bowser-1.9.3/bowser.min.js","california-oil-spills_files/distill-2.2.21/template.v2.js","california-oil-spills_files/figure-html5/unnamed-chunk-2-1.png","california-oil-spills_files/figure-html5/unnamed-chunk-5-1.png","california-oil-spills_files/figure-html5/unnamed-chunk-6-1.png","california-oil-spills_files/header-attrs-2.6.6/header-attrs.js","california-oil-spills_files/jquery-1.11.3/jquery.min.js","california-oil-spills_files/popper-2.6.0/popper.min.js","california-oil-spills_files/tippy-6.2.7/tippy-bundle.umd.min.js","california-oil-spills_files/tippy-6.2.7/tippy-light-border.css","california-oil-spills_files/tippy-6.2.7/tippy.css","california-oil-spills_files/tippy-6.2.7/tippy.umd.min.js","california-oil-spills_files/webcomponents-2.0.0/webcomponents.js","oil.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1472,6 +1472,18 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </div>
 
 <div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+hide
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"oil.png"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="oil.png" width="590" style="display: block; margin: auto;" /></p>
+</div>
 <h3 id="summary">Summary:</h3>
 <p>This post explores how to build a static choropleth map with R and the <code>ggplot2</code> package. It shows how to load spatial data into R, merge region features between datasets, and build a finalized map of 2008 counts of inland oil spills in California counties as a fill color gradient.</p>
 <p>I first had issues plotting the oil spills as fill color on the map when I used two separate <code>geom_sf()</code> layers, but I realized I could merge the data frame and then use the number column aesthetically as the fill color of the map. In doing this project, I became more familiar with reading in and wrangling spatial data, using the <code>sf</code> package functions, and how to use the <code>viridis</code> package for color gradients. I also used the <code>guide</code> function to update my legend.</p>
@@ -1586,7 +1598,7 @@ hide
 </code></pre>
 </div>
 </details>
-<p><img src="california-oil-spills_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+<p><img src="california-oil-spills_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

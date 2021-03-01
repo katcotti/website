@@ -14,6 +14,10 @@ output:
     highlight: haddock
 ---
 
+```{r, fig.align='center'}
+knitr::include_graphics("snowshoe.png")
+```
+
 ### Summary: 
 
 This post includes a mini-report I completed for my Environmental Data Science course in Fall of 2020 at the Bren School. I learned how to customize `gg_beeswarm` plots and descriptive statistic tables with `kableExtra`. I also practiced running two-sample t-tests and linear regression analysis in R and describing the outcomes with in line text referencing in this report. 

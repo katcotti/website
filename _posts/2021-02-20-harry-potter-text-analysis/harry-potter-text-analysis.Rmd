@@ -12,6 +12,10 @@ output:
     code_folding: hide
     highlight: haddock
 ---
+```{r, fig.align='center'}
+knitr::include_graphics("harry.png")
+```
+
 ### Summary:
 This post explores how to build a word cloud using `ggplot` & conduct sentiment analysis using the `NRC` lexicon. It shows how to load in pdf text data in R, get text data in tidy & tokenized format, and make finalized data visualizations for word frequencies & sentiment in Harry Potter & The Sorcerer's Stone. 
 

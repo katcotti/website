@@ -12,6 +12,11 @@ output:
     code_folding: hide
     highlight: haddock
 ---
+
+```{r, echo = FALSE, fig.align = 'center'}
+knitr::include_graphics("oil.png")
+```
+
 ### Summary:
 This post explores how to build a static choropleth map with R and the `ggplot2` package. It shows how to load spatial data into R, merge region features between datasets, and build a finalized map of 2008 counts of inland oil spills in California counties as a fill color gradient. 
 
