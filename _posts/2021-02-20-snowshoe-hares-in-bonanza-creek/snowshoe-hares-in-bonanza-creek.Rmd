@@ -53,7 +53,7 @@ Snowshoe hare weight and size measurements were collected from capture-recapture
 # C. Exploratory Findings: 
 
 ### i) Annual Juvenile Hare Trap Counts and Descriptive Statistics:
-This section explores using the `lubridate` package to convert date columns to date class in R, and using the `dplyr` `count` function to find counts of groupings of variables & then graph counts using `ggplot`. Then, I use the `dplyr` `summarize` function to find descriptive statistics & store aoutcomes as objects in R to use for in line referencing of results in the analysis. 
+This section explores using the `lubridate` package to convert date columns to date class in R, and using the `dplyr` `count` function to find counts of groupings of variables & then graph counts using `ggplot`. Then, I use the `dplyr` `summarize` function to find descriptive statistics & store outcomes as objects in R to use for in line referencing of results in the analysis. 
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.cap = "**Figure 1:** Bar graph displaying counts of juvenile snowshoe hares trapped per year of the study (1998-2012). Sex and grid (sampling site) were not considered as variables here. No data is available for hare age in 1998, 2002, and 2009 therefore counts of juveniles trapped can not be included for these years. Data: Kielland et al. (2017)"}
 

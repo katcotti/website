@@ -12,9 +12,12 @@ output:
     code_folding: hide
     highlight: haddock
 ---
+```{r, fig.align='center'}
+knitr::include_graphics("plastic.png")
+```
 
 ### Summary: 
-This post explores how to analyze spatial data & build a choropleth map with the `rnaturalearth` package to participate in Tidy Tuesday 1.26.2021. This post shows how to load in tidyTuesday data, merge spatial data frames using `left_join`, and build a finalized choropleth map. I wanted to look at total plastic counts by country and display this on a spatial map.  This is my first attempt at spacial data visualization and it was exciting to give spatial mapping a try for tidy tuesday!
+This post explores how to analyze spatial data & build a choropleth map with the `rnaturalearth` package to participate in Tidy Tuesday 1.26.2021. This post shows how to load in tidyTuesday data, merge spatial data frames using `left_join`, and build a finalized  map. I wanted to look at total plastic counts by country and display this on a spatial choropleth map. This is my first attempt at spacial data visualization and it was exciting to give spatial mapping a try for tidyTuesday!
 
 At first, I had issues reading in a spatial data frame for the world map outline, but the rnaturalearth package has built in world maps. I made a world map showing the total plastic counts for 2020 and played around with the `viridis` package to update the color gradient of the map, and I learned how to change background color of a plot using `plot.background` in `theme()`.
 

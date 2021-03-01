@@ -18,7 +18,7 @@ knitr::include_graphics("mono.png")
 ```
 
 ### Summary:
-This post explores how to build an interactive graph in R using the `plotly` package and explores how to add text and horizontal lines to a `ggplot` graph to customize the graph with relevant information. I also learned how to use skip when reading in csv files to skip lines that are not relevant to the data. 
+This post explores how to build an interactive graph in R using the `plotly` package and explores how to add text and horizontal lines to a `ggplot` graph to customize the graph with relevant information. I also learned how to use the `skip` function when reading in csv files to skip lines that are not relevant to the data. 
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
@@ -31,7 +31,7 @@ library(plotly)
 ```
 
 ### Reading in Data:
-First, when reading in the data I learned how to use the `skip()` function in read.csv to skip the lines in the data set that were not under the variables of interest, and then I used the `clean_names()` function to get the variables in lower snake case.
+First, when reading in the data I learned how to use the `skip()` function in read.csv to skip the lines in the data set that were not under the variables of interest, and then I used the `clean_names()` function to get the variables in lower snake case. I learned how to update ggplot by changing the scale and limits of the x and y axis as well.
 
 ```{r}
 # c. Read in the data, skipping the first 5 rows:

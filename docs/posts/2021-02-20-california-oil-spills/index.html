@@ -2432,7 +2432,7 @@ hide
 <li>A choropleth map requires a geospatial dataset to provide the region boundaries, in this example we are looking at California counties. First, I had to find &amp; download a shapefile data for borders of California counties.</li>
 <li>You also need another geospatial dataset with numeric variables for each location that will we use to color the counties. I used download data from CA DFW Oil Spill Incident Tracking <a href="https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/data">URL</a></li>
 </ul>
-<p>First, I loaded the spatial data sets into R using the <code>read_sf()</code> funtion from the <code>sf</code> package. I created a folder in my project root named “data” to store all data files &amp; then the oil spatial data files are in a folder labeled “Oil_Spill_Tracking” and the California counties boundary data in a folder labeled “ca_counties”. I then use the <code>here()</code> function from the <code>janitor</code> package to give a clear file path to the shape files.</p>
+<p>First, I loaded the spatial data sets into R using the <code>read_sf()</code> function from the <code>sf</code> package. I created a folder in my project root named “data” to store all data files &amp; then the oil spatial data files are in a folder labeled “Oil_Spill_Tracking” and the California counties boundary data in a folder labeled “ca_counties”. I then use the <code>here()</code> function from the <code>janitor</code> package to give a clear file path to the shape files.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2482,9 +2482,9 @@ hide
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Data Wrangling - count oil spills for ca county:</span>
 <span class='co'>## Make a subset of data:</span>
 <span class='va'>inland_subset</span> <span class='op'>&lt;-</span> <span class='va'>oil_spill_data</span> <span class='op'>%&gt;%</span> 
-<span class='co'># Rename county for simplificaiton:</span>
+<span class='co'># Rename county for simplification:</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>county <span class='op'>=</span> <span class='va'>localecoun</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-<span class='co'># Only keep obervations from inland areas:</span>
+<span class='co'># Only keep observations from inland areas:</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>inlandmari</span> <span class='op'>==</span> <span class='st'>"Inland"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
 <span class='co'># Group oil spills by county:</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>county</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
@@ -2517,7 +2517,7 @@ hide
 hide
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Make a Static Chloroleth Map:</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Make a Static Chloropleth Map:</span>
 <span class='fu'>ggplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_sf</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>counties_oil</span>,
           <span class='fu'>aes</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span>,

@@ -98,7 +98,7 @@ harry_counts <- harry_nostop %>%
 harry_ch15_top_100 <- harry_counts %>% 
 # Only keep words from chapter 15:
   filter(number == "fifteen") %>% 
-# Arrange in decending order: 
+# Arrange in descending order: 
   arrange(-n) %>% 
 # Only keep top 100: 
   slice(1:100)
